@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Just One Question ❤️</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        transition: background 1s;
+    }
 
+    .box {
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 12px 30px;
+        font-size: 18px;
+        margin: 10px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+    }
+
+    #yes {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    #no {
+        background: #ccc;
+    }
+
+    .heart {
+        position: absolute;
+        bottom: -20px;
+        font-size: 30px;
+        animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-110vh);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="box" id="content">
+    <h1>Do you love me? ❤️</h1>
+    <button id="yes">Yes 💕</button>
+    <button id="no">No 😢</button>
+</div>
+
+<!-- Telugu Romantic Song (Replace with your own mp3 if needed) -->
+<audio id="song" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+    const song = document.getElementById("song");
+
+    yesBtn.onclick = () => {
+        document.body.style.background = "#ffb6c1";
+        document.getElementById("content").innerHTML = "<h1>I Love You Too 💖💖💖</h1>";
+        song.play();
+
+        setInterval(createHeart, 300);
+    };
+
+    noBtn.onclick = () => {
+        noBtn.style.position = "absolute";
+        noBtn.style.left = Math.random() * 80 + "vw";
+        noBtn.style.top = Math.random() * 80 + "vh";
+    };
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (20 + Math.random() * 30) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+</script>
+
+</body>
+</html>
